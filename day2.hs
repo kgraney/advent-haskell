@@ -16,6 +16,6 @@ compute f boxes =
 
 
 main = do
-    s <- getContents
-    print $ compute paperSize $ words s
-    print $ compute ribbonSize $ words s
+    x <- lines <$> getContents
+    print $ compute paperSize x
+    print $ compute ribbonSize x
