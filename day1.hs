@@ -1,17 +1,13 @@
 -- Part 1
-finalFloor floor string =
-    case string of
-        ('(':t) -> finalFloor (floor + 1) t
-        (')':t) -> finalFloor (floor - 1) t
-        [] -> floor
+finalFloor floor ('(':t) = finalFloor (floor + 1) t
+finalFloor floor (')':t) = finalFloor (floor - 1) t
+finalFloor floor [] = floor
 
 -- Part 2
 enterBasement (-1) count string = count
-enterBasement floor count string =
-    case string of
-        ('(':t) -> enterBasement (floor + 1) (count + 1) t
-        (')':t) -> enterBasement (floor - 1) (count + 1) t
-        [] -> -1
+enterBasement floor count ('(':t) = enterBasement (floor + 1) (count + 1) t
+enterBasement floor count (')':t) = enterBasement (floor - 1) (count + 1) t
+enterBasement floor count [] = -1
 
 main = do
     s <- getLine
